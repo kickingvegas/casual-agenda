@@ -221,7 +221,7 @@
 
              ;; TODO: figure out how to test :inapt switches
              (:binding "O" :command casual-agenda-clock-out)
-             (:binding "x" :command org-clock-cancel)
+             (:binding "x" :command casual-agenda-clock-cancel)
              (:binding "m" :command org-clock-modify-effort-estimate)
 
              (:binding "p" :command org-agenda-previous-line)
