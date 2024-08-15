@@ -1,0 +1,147 @@
+* Casual Agenda
+An opinionated [[https://github.com/magit/transient][Transient]]-based user interface for [[https://orgmode.org/manual/Agenda-Views.html][Org Agenda]], a feature of Emacs [[https://orgmode.org/features.html][Org mode]] to help plan your day.
+
+[[file:docs/images/casual-agenda-screenshot.png]]
+
+* Motivation
+While highly functional, Org Agenda has a steep learning curve as it has a very diverse command set. Menus are a user interface (UI) affordance that offer users discoverability and recall that can lower Org Agenda's learning curve. While menus are commonly associated with mouse-driven UI, the inclusion of Transient in Emacs core allows for a menu UI that is keyboard-driven. Casual Agenda endeavors to offer this as many Emacs users prefer keyboard-driven workflows.
+
+** Goals
+- To provide a keyboard-driven menu UI for Org Agenda.
+- To provide casual access to the Org Agenda command set.
+
+** Non-Goals
+- Full coverage of all Org Agenda commands. Casual Agenda is not intended to be a power user tool.
+- Strict adherence to Org Agenda command naming. While Casual Agenda is *mostly* in alignment with Org Agenda’s command naming, there are cases where it will make an opinionated change if the name is deemed too vague or idiomatic.
+- UX Stability (for now). Given that Casual Agenda is early in its life-cycle, expect changes to its user experience in terms of menu hierarchy and keybinding choices in future releases.
+
+* Requirements
+Casual Agenda requires usage of
+- Emacs ≥ 29.1 
+- Org ≥ 9.7.1
+
+Casual Agenda has been verified with the following configuration. 
+- Emacs 29.4 (macOS 14.6, Ubuntu Linux 22.04.4 LTS)
+- Org 9.7.9
+
+* Asks
+As Casual Agenda is new, we are looking for early adopters! Your [[https://github.com/kickingvegas/casual-agenda/discussions][feedback]] is welcome as it will likely impact Casual Agenda's evolution, particularly with regards to UI.
+
+* Install
+If installed via MELPA then add these lines to your Emacs initialization file with your binding of preference. 
+#+begin_src elisp :lexical no
+  (require 'casual-agenda) ; optional
+  (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
+#+end_src
+
+If you use ~use-package~, here is the recipe for installing it.
+#+begin_src elisp :lexical no
+  (use-package casual-agenda
+    :ensure nil
+    :bind (:map
+           org-agenda-mode-map
+           ("C-o" . casual-agenda-tmenu)))
+#+end_src
+
+
+** Configuration
+Use these bindings to configure Org Agenda to be consistent with bindings used by Casual Agenda. This is optional.
+
+#+begin_src elisp :lexical no
+  ; bindings to make jumping consistent between Org Agenda and Casual Agenda
+  (keymap-set org-agenda-mode-map "M-j" #'org-agenda-clock-goto) ; optional
+  (keymap-set org-agenda-mode-map "J" #'bookmark-jump) ; optional
+#+end_src
+
+If you use ~use-package~, modify your configuration as follows:
+#+begin_src elisp :lexical no
+  (use-package casual-agenda
+    :ensure nil
+    :bind (:map
+           org-agenda-mode-map
+           ("C-o" . casual-agenda-tmenu)
+           ("M-j" . org-agenda-clock-goto) ; optional
+           ("J" . bookmark-jump))) ; optional
+#+end_src
+
+* Usage
+
+The main menu is divided into five sections:
+
+- *Agenda* - Modify the view duration (day, week, year)
+- *Filter* - Filter displayed headlines with different criteria
+- *Actions* - Perform an activity on a headline, create/capture a headline or even generate a different agenda view.
+- *Navigation* - move the point to where you want it to be.
+- *Utils* - Set a timer, get almanac info.
+
+** Unicode Symbol Support
+By enabling “(u) Use Unicode Symbols” from the Settings menu, Casual Agenda will use Unicode symbols as appropriate in its menus.
+
+[[file:docs/images/casual-agenda-unicode-screenshot.png]]
+
+
+** Operating on Headlines
+
+Use the /Operations/ menu to alter attributes about it such as TODO state, scheduling, tags, and priority. To use it, move the point to the line of a heading you wish to change and from the main menu select "(o) Operations". The following menu will be displayed.
+
+[[file:docs/images/casual-agenda-operations-screenshot.png]]
+
+** Marking Headlines
+
+User the /Mark/ menu to mark different headlines and perform a bulk action on them. From the main menu, select "(m) Mark" to display the following menu:
+
+[[file:docs/images/casual-agenda-mark-screenshot.png]]
+
+
+** Changing Modes and Settings
+
+Agenda views have different display modes and behavior that can be modified from the /Settings/ menu. From the main menu, select "(,) Settings" to display the following menu:
+
+[[file:docs/images/casual-agenda-settings-screenshot.png]]
+
+
+** Almanac
+Get sunrise/sunset times, lunar cycle dates, and holidays with respect to a date via the /Almanac/ menu. From the main menu, select "(l) Almanac" to display the following menu.
+
+[[file:docs/images/casual-agenda-almanac-screenshot.png]]
+
+
+* Common Menu Actions
+Casual Agenda is built using Transient menus and as such adopts much of its default behavior.
+
+Each menu item has a /key/ and a /label/. The /key/ is what is typed by the user to select the menu item. A key can be prefixed with a meta (M-) or control (C-) key. 
+
+Dismissing a menu regardless of how deep you are in sub-menus can be done by entering ~C-q~. A menu can also be dismissed by entering ~C-g~, which will return you to the previous menu.
+
+If a mouse is available, a menu item can be selected by moving the mouse cursor over its label and pressing down button 1.
+
+Pressing the ~?~ key will toggle help for all the menu items. Press the key of interest to get help for it.
+
+Menu items can also take a prefix argument if supported. Enter ~C-u~ and optionally a value before selecting a menu item.
+
+* Development
+For users who wish to help contribute to Casual Agenda or personally customize it for their own usage, please read the [[docs/developer.org][developer documentation]].
+
+* Sponsorship
+If you enjoy using Casual Agenda, consider making a modest financial contribution to help support its development and maintenance.
+
+[[https://www.buymeacoffee.com/kickingvegas][file:docs/images/default-yellow.png]]
+
+* See Also
+Casual Agenda is part of a suite of porcelains for different Emacs packages.
+
+To get all current and future Casual porcelains, please install [[https://github.com/kickingvegas/casual-suite][Casual Suite]] from [[https://melpa.org/#/casual-suite][MELPA]].
+
+Porcelains currently supported by Casual are listed below:
+
+- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for [[https://github.com/abo-abo/avy][Avy]].
+- [[https://github.com/kickingvegas/casual-calc][Casual Calc]] - a Transient porcelain for [[https://www.gnu.org/software/emacs/manual/html_mono/calc.html][Calc]].
+- [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient porcelain for [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html][Dired]].
+- [[https://github.com/kickingvegas/casual-info][Casual Info]] - a Transient porcelain for the [[https://www.gnu.org/software/emacs/manual/html_node/info/][Info]] reader.  
+- [[https://github.com/kickingvegas/casual-isearch][Casual I-Search]] - a Transient menu for [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Incremental-Search.html][I-Search]].
+
+Users who prefer finer grained control over package installation can install each porcelain above individually.
+
+* Acknowledgments
+A heartfelt thanks to all the contributors to Org Mode and [[https://github.com/magit/transient][Transient]]. Casual Agenda would not be possible without your efforts.
+
