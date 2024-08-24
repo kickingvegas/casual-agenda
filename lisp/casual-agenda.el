@@ -40,6 +40,10 @@
 ;;          ("M-j" . org-agenda-clock-goto) ; optional
 ;;          ("J" . bookmark-jump))) ; optional
 
+;; Note that this package requires recent versions of Org and Transient. Please
+;; refer to the "Install" section on this project's repository web page for more
+;; detail.
+
 ;;; Code:
 (require 'org-agenda)
 (require 'bookmark)
