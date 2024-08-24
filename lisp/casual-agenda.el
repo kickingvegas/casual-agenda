@@ -5,7 +5,7 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-agenda
 ;; Keywords: tools
-;; Version: 1.0.1
+;; Version: 1.0.2
 ;; Package-Requires: ((emacs "29.1") (casual-lib "1.1.0") (org "9.7.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -39,6 +39,10 @@
 ;;          ("C-o" . casual-agenda-tmenu)
 ;;          ("M-j" . org-agenda-clock-goto) ; optional
 ;;          ("J" . bookmark-jump))) ; optional
+
+;; Note that this package requires recent versions of Org and Transient. Please
+;; refer to the "Install" section on this project's repository web page for more
+;; detail.
 
 ;;; Code:
 (require 'org-agenda)
