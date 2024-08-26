@@ -40,9 +40,12 @@
 ;;          ("M-j" . org-agenda-clock-goto) ; optional
 ;;          ("J" . bookmark-jump))) ; optional
 
-;; Note that this package requires recent versions of Org and Transient. Please
-;; refer to the "Install" section on this project's repository web page for more
-;; detail.
+;; This package requires that the built-in packages `org' and `transient' be
+;; upgraded. By default, `package.el' will not upgrade a built-in package
+;; without customization. Set the customizable variable
+;; `package-install-upgrade-built-in' to `t' to allow upgrading of built-in
+;; packages. For more details, please refer to the "Install" section on this
+;; project's repository web page.
 
 ;;; Code:
 (require 'org-agenda)
