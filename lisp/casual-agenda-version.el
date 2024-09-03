@@ -22,7 +22,7 @@
 
 ;;; Code:
 
-(defconst casual-agenda-version "1.0.3"
+(defconst casual-agenda-version "1.0.4"
   "Casual Agenda Version.")
 
 (defun casual-agenda-version ()
