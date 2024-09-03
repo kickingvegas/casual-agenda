@@ -1,3 +1,5 @@
+[[https://melpa.org/#/casual-agenda][file:https://melpa.org/packages/casual-agenda-badge.svg]]
+
 * Casual Agenda
 An opinionated [[https://github.com/magit/transient][Transient]]-based user interface for [[https://orgmode.org/manual/Agenda-Views.html][Org Agenda]], a feature of Emacs [[https://orgmode.org/features.html][Org mode]] to help plan your day.
 
@@ -28,7 +30,7 @@ Casual Agenda has been verified with the following configuration.
 As Casual Agenda is new, we are looking for early adopters! Your [[https://github.com/kickingvegas/casual-agenda/discussions][feedback]] is welcome as it will likely impact Casual Agenda's evolution, particularly with regards to UI.
 
 * Install
-If installed via MELPA then add these lines to your Emacs initialization file with your binding of preference. 
+If installed via [[https://melpa.org/#/casual-agenda][MELPA]] then add these lines to your Emacs initialization file with your binding of preference. 
 #+begin_src elisp :lexical no
   (require 'casual-agenda) ; optional
   (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
@@ -40,7 +42,8 @@ If you use ~use-package~, here is the recipe for installing it.
     :ensure nil
     :bind (:map
            org-agenda-mode-map
-           ("C-o" . casual-agenda-tmenu)))
+           ("C-o" . casual-agenda-tmenu))
+    :after (org-agenda))
 #+end_src
 
 
