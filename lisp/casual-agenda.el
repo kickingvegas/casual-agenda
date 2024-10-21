@@ -23,6 +23,12 @@
 
 ;;; Commentary:
 
+;; NOTICE
+;; This package `casual-agenda' has been superseded by the package `casual'.
+;; Please update to the `casual' package from either MELPA or MELPA stable. Upon
+;; installation and upgrade of the `casual' package, this package will be
+;; removed from your local Emacs configuration.
+
 ;; Casual Agenda is an opinionated Transient user interface for Org Agenda.
 
 ;; INSTALLATION
@@ -53,6 +59,13 @@
 (require 'bookmark)
 (require 'casual-agenda-utils)
 (require 'casual-agenda-settings)
+
+(display-warning
+ :warning
+ (concat
+  "NOTICE: "
+  "The package casual-agenda has been superseded by the package casual. "
+  "Please upgrade to casual at your earliest convenience."))
 
 ;;;###autoload (autoload 'casual-agenda-tmenu "casual-agenda" nil t)
 (transient-define-prefix casual-agenda-tmenu ()
